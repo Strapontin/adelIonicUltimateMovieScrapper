@@ -1,0 +1,8 @@
+{
+  "name": "adelIonicUltimateMovieScrapper",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "1d6eb5b1"
+}
