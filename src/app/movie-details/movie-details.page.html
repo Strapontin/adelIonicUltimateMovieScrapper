@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ title }}</ion-title>
+    <ion-back-button (click)="onClickBack()"></ion-back-button> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div id="dataContainer">
+    <img id="poster" [src]="detailsMovie.poster" />
+    <!-- TODO Ajouter un onClick => affichage poster HD -->
+    <p><b>Date de sortie</b> : {{ detailsMovie.releaseYear }}</p>
+    <p><b>Recommandation d'âge</b> : {{ detailsMovie.minimumAge }}</p>
+    <p><b>Résumé</b> : {{ detailsMovie.fullPlot }}</p>
+    <p><b>Genre</b> : {{ detailsMovie.genre }}</p>
+    <p><b>Durée</b> : {{ detailsMovie.duree }}</p>
+    <p><b>Producteur</b> : {{ detailsMovie.producer }}</p>
+    <p><b>Acteurs</b> : {{ detailsMovie.actors }}</p>
+    <p><b>Awards</b> : {{ detailsMovie.awards }}</p>
+    <p><b>Note</b> : {{ detailsMovie.imdbRating }}, sur un total de {{ detailsMovie.imdbTotalVotes }} votes</p>
+    <p><b><a href="{{ detailsMovie.website }}">Lien vers le site web.</a></b></p>
+  </div>
+</ion-content>

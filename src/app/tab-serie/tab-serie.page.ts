@@ -15,19 +15,16 @@ export class TabSeriePage implements OnInit {
   movieArray: any;
   showSearch: boolean = true;
 
-  tabMovie: any;
-  tabSerie: any;
-
-  constructor(public movieData: DataProviderOMDbService) { }
+  constructor(public serieDataProvider: DataProviderOMDbService) { }
 
 
   // Lorsque l'on clique sur le bouton pour rechercher des films
   onFindTitle() {
 
     // Recherche des films selon le titre souhaité
-    this.movieData.findSeries(this.value).then((toto) => {
+    this.serieDataProvider.findSeries(this.value).then((serieData) => {
       
-      let dataReceived = toto.data;
+      let dataReceived = serieData.data;
 
       // Si on a reçu une réponse correcte
       if (dataReceived.Response == "True"){

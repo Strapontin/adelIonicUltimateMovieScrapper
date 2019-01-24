@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ title }}</ion-title>
+    <ion-back-button (click)="onClickBack()"></ion-back-button> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div id="dataContainer">
+    <img id="poster" [src]="detailsSerie.poster" />
+    <!-- TODO Ajouter un onClick => affichage poster HD -->
+    <p><b>Date de sortie</b> : {{ detailsSerie.releaseYear }}</p>
+    <p><b>Recommandation d'âge</b> : {{ detailsSerie.minimumAge }}</p>
+    <p><b>Résumé</b> : {{ detailsSerie.fullPlot }}</p>
+    <p><b>Genre</b> : {{ detailsSerie.genre }}</p>
+    <p><b>Producteur</b> : {{ detailsSerie.producer }}</p>
+    <p><b>Acteurs</b> : {{ detailsSerie.actors }}</p>
+    <p><b>Awards</b> : {{ detailsSerie.awards }}</p>
+    <p><b>Note</b> : {{ detailsSerie.imdbRating }}, sur un total de {{ detailsSerie.imdbTotalVotes }} votes</p>
+    <p><b><a href="{{ detailsSerie.website }}">Lien vers le site web.</a></b></p>
+    <p><b>Nombre de saisons</b> : {{ detailsSerie.totalSeasons }}</p>
+    <ion-list>
+      <ion-item *ngFor="let season of detailsSerie.seasons">
+        <ion-label>{{ season }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -16,8 +16,8 @@ import { HomePage } from './home.page';
         path: '',
         component: HomePage,
         children: [
-			{ path: 'tab-movie', loadChildren: '../tab-movie/tab-movie.module#TabMoviePageModule' },
-			{ path: 'tab-serie', loadChildren: '../tab-serie/tab-serie.module#TabSeriePageModule' },
+          { path: 'tab-movie', loadChildren: '../tab-movie/tab-movie.module#TabMoviePageModule' },
+          { path: 'tab-serie', loadChildren: '../tab-serie/tab-serie.module#TabSeriePageModule' },
       	]
       }
     ])

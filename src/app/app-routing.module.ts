@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'movie-details/:id', loadChildren: './movie-details/movie-details.module#MovieDetailsPageModule' },
+  { path: 'serie-details/:id', loadChildren: './serie-details/serie-details.module#SerieDetailsPageModule' },
   // { path: 'tab-movie', loadChildren: './tab-movie/tab-movie.module#TabMoviePageModule' },
   // { path: 'tab-serie', loadChildren: './tab-serie/tab-serie.module#TabSeriePageModule' },
 ];

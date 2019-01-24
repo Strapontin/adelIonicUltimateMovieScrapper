@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataProviderOMDbService } from '../services/data-provider-omdb.service';
 
 @Component({
@@ -15,19 +15,16 @@ export class TabMoviePage implements OnInit {
   movieArray: any;
   showSearch: boolean = true;
 
-  tabMovie: any;
-  tabSerie: any;
-
-  constructor(public movieData: DataProviderOMDbService) { }
+  constructor(public movieDataProvider: DataProviderOMDbService) { }
 
 
   // Lorsque l'on clique sur le bouton pour rechercher des films
-  onFindTitle() {
+    onFindTitle() {
 
     // Recherche des films selon le titre souhaité
-    this.movieData.findMovies(this.value).then((toto) => {
+    this.movieDataProvider.findMovies(this.value).then((movieData) => {
       
-      let dataReceived = toto.data;
+      let dataReceived = movieData.data;
 
       // Si on a reçu une réponse correcte
       if (dataReceived.Response == "True"){
@@ -51,6 +48,7 @@ export class TabMoviePage implements OnInit {
   // Lors du clic sur le bouton pour cacher/afficher la searchbar
   onClickSearch() {
   
+    // On cache ou affiche la barre de recherche
     this.showSearch = !this.showSearch;
   }
 }

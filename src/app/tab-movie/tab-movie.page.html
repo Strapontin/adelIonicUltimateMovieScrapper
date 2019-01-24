@@ -13,28 +13,12 @@
   <ion-content padding>
   
     <div class="movie-container">
-      <ion-card class="movie-information" *ngFor="let element of movieArray" > 
+      <ion-card class="movie-information" *ngFor="let element of movieArray" [routerLink]="'/movie-details/' + element.imdbID" routerDirection="forward"> 
         <img class="movie-image" [src]="element.Poster" />
         <div class="movie-title" >{{ element.Title }}</div>
       </ion-card>
-    </div>
-    
-    <!-- <ion-tabs>
-        <ion-tab-bar slot="bottom">
-          
-          <ion-tab-button tab="tabMovie">
-            <ion-label>Films</ion-label>
-          </ion-tab-button>
-  
-          <ion-tab-button tab="tabSerie">
-            <ion-label>Séries</ion-label>
-          </ion-tab-button>
-  
-        </ion-tab-bar>
-    </ion-tabs> -->
-  
+    </div>  
   </ion-content>
-  
   
   
   

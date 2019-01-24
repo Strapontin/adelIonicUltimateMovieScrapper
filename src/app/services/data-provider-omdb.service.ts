@@ -10,45 +10,103 @@ export class DataProviderOMDbService {
   basicMovieUrl: string = "http://www.omdbapi.com/?apikey=75522b56&type=movie&s=";
   basicSerieUrl: string = "http://www.omdbapi.com/?apikey=75522b56&type=series&s=";
 
+  basicDetailMovieUrl: string = "http://www.omdbapi.com/?apikey=75522b56&plot=full&type=movie&i=";
+  basicDetailSeriesUrl: string = "http://www.omdbapi.com/?apikey=75522b56&plot=full&type=series&i=";
+  basicDetailSeasonUrl: string = "http://www.omdbapi.com/?apikey=75522b56&plot=full&type=series&season=";
+  basicDetailEpisodeUrl: string = "http://www.omdbapi.com/?apikey=75522b56&plot=full&type=episode&i=";
+
 
   constructor(public http: HttpProviderService) { }
 
 
   // Recherche tous les films correspondant au "title"
-  findMovies(title: string){
-    
+  findMovies(title: string) {
+
     let urlToSearch = this.basicMovieUrl + title;
 
     // Recherche en http
     return this.http.get(urlToSearch, {}, {})
       .then(data => {
 
-        console.log("Données de recherche d'un film reçues");
+        console.log("Données de recherche pour le film '" + title + "' reçues");
         return data;
       })
       .catch(error => {
 
-        console.log("Erreurs lors de la recherche d'un film : ");
+        console.log("Erreurs lors de la recherche de détails pour l'url : '" + urlToSearch + "'. Détails de l'erreur :");
         console.log(error);
         return error;
       });
   }
 
   // Recherche tous les séries correspondant au "title"
-  findSeries(title: string){
-    
+  findSeries(title: string) {
+
     let urlToSearch = this.basicSerieUrl + title;
 
     // Recherche en http
     return this.http.get(urlToSearch, {}, {})
       .then(data => {
 
-        console.log("Données de recherche d'un film reçues");
+        console.log("Données de recherche de la série '" + title + "' reçues");
         return data;
       })
       .catch(error => {
 
-        console.log("Erreurs lors de la recherche d'un film : ");
+        console.log("Erreurs lors de la recherche de détails pour l'url : '" + urlToSearch + "'. Détails de l'erreur :");
+        console.log(error);
+        return error;
+      });
+  }
+
+  // Recherche les détails pour un id donné
+  getDetails(type: string, id: string) {
+
+    let urlToSearch;
+
+    // On filtre les détails selon ce que l'on veut rechercher
+    if (type === "movie") {
+      urlToSearch = this.basicDetailMovieUrl + id;
+    }
+    else if (type === "series"){
+      urlToSearch = this.basicDetailSeriesUrl + id;
+    }
+    else if (type === "episode") {
+      urlToSearch = this.basicDetailEpisodeUrl + id;
+    }
+
+    // Recherche en http
+    return this.http.get(urlToSearch, {}, {})
+      .then(data => {
+
+        console.log("Données de recherche pour l'id '" + id + "' reçues");
+        console.log(data.data);
+        return data;
+      })
+      .catch(error => {
+
+        console.log("Erreurs lors de la recherche de détails pour l'url : '" + urlToSearch + "'. Détails de l'erreur :");
+        console.log(error);
+        return error;
+      });
+  }
+
+  // Compte le nombre d'épisodes pour une saison
+  countEpisodes(seasonNumber: number, id: string){
+
+    let urlToSearch = this.basicDetailSeasonUrl + seasonNumber + "&i=" + id;
+
+    // Recherche en http
+    return this.http.get(urlToSearch, {}, {})
+      .then(data => {
+
+        console.log("azert");
+        console.log(data);
+        return data;
+      })
+      .catch(error => {
+
+        console.log("Erreurs lors de la recherche de détails pour l'url : '" + urlToSearch + "'. Détails de l'erreur :");
         console.log(error);
         return error;
       });
