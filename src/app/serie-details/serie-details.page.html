@@ -19,10 +19,12 @@
     <p><b>Note</b> : {{ detailsSerie.imdbRating }}, sur un total de {{ detailsSerie.imdbTotalVotes }} votes</p>
     <p><b><a href="{{ detailsSerie.website }}">Lien vers le site web.</a></b></p>
     <p><b>Nombre de saisons</b> : {{ detailsSerie.totalSeasons }}</p>
+
     <ion-list>
-      <ion-item *ngFor="let season of detailsSerie.seasons">
+      <ion-item class="season" *ngFor="let season of detailsSerie.seasons; let i = index" [routerLink]="'/serie-details/season-details/' + id + '/' + i+1">
         <ion-label>{{ season }}</ion-label>
       </ion-item>
     </ion-list>
+
   </div>
 </ion-content>

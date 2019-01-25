@@ -92,7 +92,7 @@ export class DataProviderOMDbService {
   }
 
   // Compte le nombre d'épisodes pour une saison
-  countEpisodes(seasonNumber: number, id: string){
+  getEpisodes(seasonNumber: number, id: string){
 
     let urlToSearch = this.basicDetailSeasonUrl + seasonNumber + "&i=" + id;
 
@@ -100,9 +100,7 @@ export class DataProviderOMDbService {
     return this.http.get(urlToSearch, {}, {})
       .then(data => {
 
-        console.log("azert");
-        console.log(data);
-        return data;
+        return data.data.Episodes;
       })
       .catch(error => {
 

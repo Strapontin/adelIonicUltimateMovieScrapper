@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ title }}</ion-title>
+    <ion-back-button (click)="onClickBack()"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div id="poster">
+    <img [src]="poster" />
+  </div>
+
+
+  <ion-list>
+    <ion-item *ngFor="let episode of episodes; let i = index" [routerLink]="'/serie-details/episode-details/' + episode.imdbID">
+      <table class="tableEpisode">
+        <td>
+          <ion-label>Episode {{ episode.episodeNumber }} -</ion-label>
+        </td>
+        <td>
+          <ion-label>{{ episode.title }}</ion-label>
+        </td>
+      </table>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

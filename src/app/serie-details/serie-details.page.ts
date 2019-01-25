@@ -22,14 +22,13 @@ export class SerieDetailsPage implements OnInit {
     this.route.params.subscribe((params) => {
 
       // On récupère l'id du film/série à recherhcer
-      this.id = params['id'];
+      this.id = params['idSerie'];
 
       console.log("id = " + this.id);
 
       // On récupère les infos selon l'id      
-      this.dataProvider.getDetails("series", this.id).then((dataResult) => {
-
-        console.log(dataResult);
+      this.dataProvider.getDetails("series", this.id)
+        .then((dataResult) => {
 
         this.detailsSerie.title = dataResult.data.Title;
         this.detailsSerie.releaseYear = dataResult.data.Year;
@@ -66,21 +65,13 @@ export class SerieDetailsPage implements OnInit {
   // Compte le nombre de saisons
   countSeasons() {
 
+    this.detailsSerie.seasons = [];
+
     for (let i = 0; i < this.detailsSerie.totalSeasons; i++) {
 
       // Enregistre le nom de la saison
-      this.detailsSerie.seasons[i].name = "Saison " + (i + 1).toString();
-
-      // Compte le nombre d'épisodes pour la saison
-      /*let nbEpisodes: number = */this.dataProvider.countEpisodes(i + 1, this.id);
-
-      // for (let j = 0; j < nbEpisodes; j++){
-
-      //   this.detailsSerie.seasons[i].episodeName[j] = "Episode " + j + 1;
-      // }
+      this.detailsSerie.seasons[i] = "Saison " + (i + 1).toString();
     }
-
-    // return array;
   }
 }
 
@@ -99,12 +90,6 @@ class DetailsSerie {
   imdbTotalVotes: number;
   website: Url;
   totalSeasons: number;
-  seasons: Seasons[] = [];
-}
-
-class Seasons {
-
-  name: string;
-  episodeName: string[] = [];
+  seasons: string[];
 }
 

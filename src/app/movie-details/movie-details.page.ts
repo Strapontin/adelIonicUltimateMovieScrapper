@@ -22,7 +22,7 @@ export class MovieDetailsPage implements OnInit {
     this.route.params.subscribe((params) => {
 
       // On récupère l'id du film/série à recherhcer
-      this.id = params['id'];
+      this.id = params['idMovie'];
 
       console.log("id = " + this.id);
 

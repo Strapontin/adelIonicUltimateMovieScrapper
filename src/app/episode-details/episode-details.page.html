@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ title }}</ion-title>
+    <ion-back-button></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div id="poster">
+    <img [src]="poster" />
+  </div>
+
+  <div id="dataContainer">
+    <p><b>Titre de l'épisode</b> : {{ episode.title }}</p>
+    <p><b>Date de sortie</b> : {{ episode.releasedDate }}</p>
+    <p><b>Durée</b> : {{ episode.length }}</p>
+    <p><b>Résumé</b> : {{ episode.plot }}</p>
+    <p><b>Note</b> : {{ episode.imdbRating }} sur un total de {{ episode.imdbTotalVotes }} votes</p>
+  </div>
+</ion-content>
