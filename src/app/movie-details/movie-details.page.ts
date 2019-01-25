@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DataProviderOMDbService } from '../services/data-provider-omdb.service';
 import { Url } from 'url';
 import { Location } from '@angular/common';
+import { IonicStorageModule } from '@ionic/storage';
 
 @Component({
   selector: 'app-movie-details',
