@@ -7,7 +7,7 @@
 
 <ion-content padding>
   <div id="dataContainer">
-    <img id="poster" [src]="detailsSerie.poster" />
+    <img [src]="detailsSerie.poster" />
     <!-- TODO Ajouter un onClick => affichage poster HD -->
     <p><b>Date de sortie</b> : {{ detailsSerie.releaseYear }}</p>
     <p><b>Recommandation d'âge</b> : {{ detailsSerie.minimumAge }}</p>
@@ -21,7 +21,7 @@
     <p><b>Nombre de saisons</b> : {{ detailsSerie.totalSeasons }}</p>
 
     <ion-list>
-      <ion-item class="season" *ngFor="let season of detailsSerie.seasons; let i = index" [routerLink]="'/serie-details/season-details/' + id + '/' + i+1">
+      <ion-item class="season" *ngFor="let season of detailsSerie.seasons; let i = index" [routerLink]="'/serie-details/season-details/' + id + '/' + (i+1)">
         <ion-label>{{ season }}</ion-label>
       </ion-item>
     </ion-list>

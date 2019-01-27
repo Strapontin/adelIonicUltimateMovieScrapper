@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataProviderOMDbService } from '../services/data-provider-omdb.service';
 import { Url } from 'url';
 import { Location } from '@angular/common';
@@ -15,7 +15,7 @@ export class SerieDetailsPage implements OnInit {
   id: string;
   detailsSerie: DetailsSerie = new DetailsSerie();
 
-  constructor(private route: ActivatedRoute, public dataProvider: DataProviderOMDbService, private location: Location) { }
+  constructor(private route: ActivatedRoute, public dataProvider: DataProviderOMDbService, private location: Location, private router: Router) { }
 
   ngOnInit() {
 
@@ -59,7 +59,8 @@ export class SerieDetailsPage implements OnInit {
   // Click pour retourner en arrière
   onClickBack() {
 
-    this.location.back();
+    // this.location.back();
+    this.router.navigateByUrl('home');
   }
 
   // Compte le nombre de saisons

@@ -15,6 +15,7 @@ export class DataProviderOMDbService {
   basicDetailSeasonUrl: string = "http://www.omdbapi.com/?apikey=75522b56&plot=full&type=series&season=";
   basicDetailEpisodeUrl: string = "http://www.omdbapi.com/?apikey=75522b56&plot=full&type=episode&i=";
 
+  basicBackgroundUrl: string = "";
 
   constructor(public http: HttpProviderService) { }
 
