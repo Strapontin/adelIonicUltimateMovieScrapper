@@ -56,10 +56,10 @@ export class MovieDetailsPage implements OnInit {
     });
   }
 
-  onClickBack() {
+  // onClickBack() {
 
-    this.location.back();
-  }
+  //   this.location.back();
+  // }
 }
 
 export class DetailsMovie {

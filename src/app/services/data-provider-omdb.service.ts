@@ -15,7 +15,7 @@ export class DataProviderOMDbService {
   basicDetailSeasonUrl: string = "http://www.omdbapi.com/?apikey=75522b56&plot=full&type=series&season=";
   basicDetailEpisodeUrl: string = "http://www.omdbapi.com/?apikey=75522b56&plot=full&type=episode&i=";
 
-  basicBackgroundUrl: string = "";
+  basicImageUrl: string = "http://img.omdbapi.com/?apikey=75522b56&h=3000i=";
 
   constructor(public http: HttpProviderService) { }
 
@@ -108,6 +108,24 @@ export class DataProviderOMDbService {
         console.log("Erreurs lors de la recherche de détails pour l'url : '" + urlToSearch + "'. Détails de l'erreur :");
         console.log(error);
         return error;
+      });
+  }
+
+  // Renvoie l'image en haute qualité
+  getImage(idMovie: string){
+
+    let urlToSearch = this.basicImageUrl + idMovie;
+
+    // Recherche en http
+    return this.http.get(urlToSearch, {}, {})
+      .then(data => {
+
+        return data;
+      })
+      .catch(error => {
+
+        console.log("Erreur lors de la recherche de l'image pour l'url : '" + urlToSearch +"'. Détails de l'erreur :");
+        console.log(error);
       });
   }
 }
