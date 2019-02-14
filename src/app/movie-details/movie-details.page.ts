@@ -55,11 +55,6 @@ export class MovieDetailsPage implements OnInit {
       });
     });
   }
-
-  // onClickBack() {
-
-  //   this.location.back();
-  // }
 }
 
 export class DetailsMovie {

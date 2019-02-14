@@ -15,7 +15,8 @@ export class DataProviderOMDbService {
   basicDetailSeasonUrl: string = "http://www.omdbapi.com/?apikey=75522b56&plot=full&type=series&season=";
   basicDetailEpisodeUrl: string = "http://www.omdbapi.com/?apikey=75522b56&plot=full&type=episode&i=";
 
-  basicImageUrl: string = "http://img.omdbapi.com/?apikey=75522b56&h=3000i=";
+  basicBigImageUrl: string = "http://img.omdbapi.com/?apikey=75522b56&h=3000&i=";
+  basicSmallImageUrl: string = "http://img.omdbapi.com/?apikey=75522b56&h=3000&i=";
 
   constructor(public http: HttpProviderService) { }
 
@@ -29,7 +30,7 @@ export class DataProviderOMDbService {
     return this.http.get(urlToSearch, {}, {})
       .then(data => {
 
-        console.log("Données de recherche pour le film '" + title + "' reçues");
+        console.log("Données pour le film avec comme url '" + urlToSearch + "' reçues");
         return data;
       })
       .catch(error => {
@@ -49,7 +50,7 @@ export class DataProviderOMDbService {
     return this.http.get(urlToSearch, {}, {})
       .then(data => {
 
-        console.log("Données de recherche de la série '" + title + "' reçues");
+        console.log("Données pour la série avec comme url '" + urlToSearch + "' reçues");
         return data;
       })
       .catch(error => {
@@ -80,7 +81,7 @@ export class DataProviderOMDbService {
     return this.http.get(urlToSearch, {}, {})
       .then(data => {
 
-        console.log("Données de recherche pour l'id '" + id + "' reçues");
+        console.log("Détails pour le type '" + type + "' et l'url '" + urlToSearch + "' reçues");
         console.log(data.data);
         return data;
       })
@@ -101,6 +102,7 @@ export class DataProviderOMDbService {
     return this.http.get(urlToSearch, {}, {})
       .then(data => {
 
+        console.log("Episodes pour l'url '" + urlToSearch + "' récupérés");
         return data.data.Episodes;
       })
       .catch(error => {
@@ -112,14 +114,34 @@ export class DataProviderOMDbService {
   }
 
   // Renvoie l'image en haute qualité
-  getImage(idMovie: string){
+  getBigImage(idMovie: string){
 
-    let urlToSearch = this.basicImageUrl + idMovie;
+    let urlToSearch = this.basicBigImageUrl + idMovie;
 
     // Recherche en http
     return this.http.get(urlToSearch, {}, {})
       .then(data => {
 
+        console.log("Grande image pour l'url '" + urlToSearch + "' récupérés");
+        return data;
+      })
+      .catch(error => {
+
+        console.log("Erreur lors de la recherche de l'image pour l'url : '" + urlToSearch +"'. Détails de l'erreur :");
+        console.log(error);
+      });
+  }
+
+  // Renvoie l'image en basse qualité
+  getSmallImage(idMovie: string){
+
+    let urlToSearch = this.basicSmallImageUrl + idMovie;
+
+    // Recherche en http
+    return this.http.get(urlToSearch, {}, {})
+      .then(data => {
+
+        console.log("Petite image pour l'url '" + urlToSearch + "' récupérés");
         return data;
       })
       .catch(error => {

@@ -13,7 +13,7 @@ export class EpisodeDetailsPage implements OnInit {
   poster: string;
 
   id: string;
-  public episode: Episode;
+  episode: Episode = new Episode();
 
   constructor(private route: ActivatedRoute, public dataProvider: DataProviderOMDbService) { }
 

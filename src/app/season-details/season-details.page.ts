@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataProviderOMDbService } from '../services/data-provider-omdb.service';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-season-details',
@@ -19,7 +20,7 @@ export class SeasonDetailsPage implements OnInit {
   constructor(private route: ActivatedRoute, public dataProvider: DataProviderOMDbService) { }
 
   ngOnInit() {
-
+    
     this.route.params.subscribe((params) => {
 
       // On récupère les infos passées dans l'url
