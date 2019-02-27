@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Liste de vos favoris
+    </ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="favorites">
+    <ion-card class="favoritesList" *ngFor="let element of favorites" [routerLink]="element.urlDetails">
+      <img class="posterImage" [src]="element.poster" />
+      <div class="title">{{ element.title }}</div>
+    </ion-card>
+  </div>
+</ion-content>

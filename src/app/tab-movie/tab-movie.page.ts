@@ -19,7 +19,7 @@ export class TabMoviePage implements OnInit {
 
 
   // Lorsque l'on clique sur le bouton pour rechercher des films
-    onFindTitle() {
+  onFindTitle() {
 
     // Recherche des films selon le titre souhaité
     this.movieDataProvider.findMovies(this.value).then((movieData) => {

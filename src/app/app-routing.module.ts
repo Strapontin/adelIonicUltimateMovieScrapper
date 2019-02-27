@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'serie-details/:idSerie', loadChildren: './serie-details/serie-details.module#SerieDetailsPageModule' },
   { path: 'serie-details/season-details/:idSerie/:season', loadChildren: './season-details/season-details.module#SeasonDetailsPageModule' },
   { path: 'serie-details/episode-details/:idEpisode', loadChildren: './episode-details/episode-details.module#EpisodeDetailsPageModule' },
-  { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' },
+  { path: 'tab-favorites', loadChildren: './tab-favorites/tab-favorites.module#TabFavoritesPageModule' },
   // { path: 'tab-movie', loadChildren: './tab-movie/tab-movie.module#TabMoviePageModule' },
   // { path: 'tab-serie', loadChildren: './tab-serie/tab-serie.module#TabSeriePageModule' },
 ];

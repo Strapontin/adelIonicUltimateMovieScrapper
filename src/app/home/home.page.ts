@@ -7,11 +7,6 @@ import { Component } from '@angular/core';
 })
 
 export class HomePage {
-
-  // value: string;
-  // movieArray: any;
-  // showSearch: boolean = true;
-
   
   constructor() { }
 

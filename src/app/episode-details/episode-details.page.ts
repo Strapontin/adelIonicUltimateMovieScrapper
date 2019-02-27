@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataProviderOMDbService } from '../services/data-provider-omdb.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-episode-details',
@@ -14,8 +15,9 @@ export class EpisodeDetailsPage implements OnInit {
 
   id: string;
   episode: Episode = new Episode();
+  favoritesColor = "primary";
 
-  constructor(private route: ActivatedRoute, public dataProvider: DataProviderOMDbService) { }
+  constructor(private route: ActivatedRoute, public dataProvider: DataProviderOMDbService, private storage: Storage) { }
 
   ngOnInit() {
 
@@ -41,6 +43,35 @@ export class EpisodeDetailsPage implements OnInit {
           this.poster = result.data.Poster;
         });
     });
+
+
+    // Si le film est dans les favoris lors du chargement on met l'icone en rouge pour dire que l'on supprime le favoris
+    this.storage.get(this.id).then((val) => {
+      
+      // Si le film existe on met le bouton en rouge
+      if (val !== null){
+        this.favoritesColor = "danger";
+      }
+    });
+  }
+
+  // Lorsque l'on clique sur le bouton d'ajout des favoris
+  clickFavorites(ionicButton) {
+
+    // Si on veut enlever le film des favoris
+    if (ionicButton.color === 'danger'){
+
+      this.storage.remove(this.id);
+
+      ionicButton.color =  'primary';
+    }
+    // Si on veut ajouter le film aux favoris
+    else{
+
+      this.storage.set(this.id, "episode");
+      
+      ionicButton.color = 'danger';
+    }
   }
 }
 

@@ -18,6 +18,7 @@ import { HomePage } from './home.page';
         children: [
           { path: 'tab-movie', loadChildren: '../tab-movie/tab-movie.module#TabMoviePageModule' },
           { path: 'tab-serie', loadChildren: '../tab-serie/tab-serie.module#TabSeriePageModule' },
+          { path: 'tab-favorites', loadChildren: '../tab-favorites/tab-favorites.module#TabFavoritesPageModule' },
       	]
       }
     ])

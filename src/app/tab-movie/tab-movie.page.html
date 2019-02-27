@@ -15,7 +15,7 @@
     <div class="movie-container">
       <ion-card class="movie-information" *ngFor="let element of movieArray" [routerLink]="'/movie-details/' + element.imdbID" routerDirection="forward"> 
         <img class="movie-image" [src]="element.Poster" />
-        <div class="movie-title" >{{ element.Title }}</div>
+        <div class="movie-title">{{ element.Title }}</div>
       </ion-card>
     </div>  
   </ion-content>

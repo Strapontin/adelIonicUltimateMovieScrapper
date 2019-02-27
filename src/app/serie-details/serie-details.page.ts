@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DataProviderOMDbService } from '../services/data-provider-omdb.service';
 import { Url } from 'url';
-import { Location } from '@angular/common';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-serie-details',
@@ -14,8 +14,9 @@ export class SerieDetailsPage implements OnInit {
   title: string;
   id: string;
   detailsSerie: DetailsSerie = new DetailsSerie();
+  favoritesColor = "primary";
 
-  constructor(private route: ActivatedRoute, public dataProvider: DataProviderOMDbService, private location: Location, private router: Router) { }
+  constructor(private route: ActivatedRoute, public dataProvider: DataProviderOMDbService, private storage: Storage) { }
 
   ngOnInit() {
 
@@ -54,13 +55,16 @@ export class SerieDetailsPage implements OnInit {
         console.log(error);
       });
     });
-  }
 
-  // Click pour retourner en arrière
-  onClickBack() {
 
-    // this.location.back();
-    this.router.navigateByUrl('home');
+    // Si le film est dans les favoris lors du chargement on met l'icone en rouge pour dire que l'on supprime le favoris
+    this.storage.get(this.id).then((val) => {
+      
+      // Si le film existe on met le bouton en rouge
+      if (val !== null){
+        this.favoritesColor = "danger";
+      }
+    });
   }
 
   // Compte le nombre de saisons
@@ -72,6 +76,25 @@ export class SerieDetailsPage implements OnInit {
 
       // Enregistre le nom de la saison
       this.detailsSerie.seasons[i] = "Saison " + (i + 1).toString();
+    }
+  }
+
+  // Lorsque l'on clique sur le bouton d'ajout des favoris
+  clickFavorites(ionicButton) {
+
+    // Si on veut enlever le film des favoris
+    if (ionicButton.color === 'danger'){
+
+      this.storage.remove(this.id);
+
+      ionicButton.color =  'primary';
+    }
+    // Si on veut ajouter le film aux favoris
+    else{
+
+      this.storage.set(this.id, "series");
+      
+      ionicButton.color = 'danger';
     }
   }
 }

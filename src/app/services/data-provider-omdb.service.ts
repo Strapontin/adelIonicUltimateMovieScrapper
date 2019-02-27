@@ -81,8 +81,8 @@ export class DataProviderOMDbService {
     return this.http.get(urlToSearch, {}, {})
       .then(data => {
 
-        console.log("Détails pour le type '" + type + "' et l'url '" + urlToSearch + "' reçues");
-        console.log(data.data);
+        // console.log("Détails pour le type '" + type + "' et l'url '" + urlToSearch + "' reçues");
+        // console.log(data.data);
         return data;
       })
       .catch(error => {

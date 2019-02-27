@@ -2,6 +2,10 @@
   <ion-toolbar>
     <ion-title>{{ title }}</ion-title>
     <ion-back-button></ion-back-button> 
+
+    <ion-button id="1" #first ion-button color="{{ favoritesColor }}" (click)="clickFavorites(first)">
+        <ion-icon name="star"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 

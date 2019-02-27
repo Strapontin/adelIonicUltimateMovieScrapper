@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FavoritesPage } from './favorites.page';
+import { TabFavoritesPage } from './tab-favorites.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FavoritesPage
+    component: TabFavoritesPage
   }
 ];
 
@@ -21,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [FavoritesPage]
+  declarations: [TabFavoritesPage]
 })
-export class FavoritesPageModule {}
+export class TabFavoritesPageModule {}
