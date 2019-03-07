@@ -38,9 +38,12 @@ export class TabMoviePage implements OnInit {
       else{
 
         console.log("Erreur : ");
-        console.log(dataReceived.Error);
-
         console.log(dataReceived);
+
+        this.movieArray = [{
+          Title: "Aucun film trouvé",
+          Poster: "N/A"
+        }];
       }
     });
   }

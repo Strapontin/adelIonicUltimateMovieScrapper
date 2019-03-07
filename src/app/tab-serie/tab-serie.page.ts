@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataProviderOMDbService } from '../services/data-provider-omdb.service';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-tab-serie',
@@ -38,9 +39,12 @@ export class TabSeriePage implements OnInit {
       else{
 
         console.log("Erreur : ");
-        console.log(dataReceived.Error);
-
         console.log(dataReceived);
+
+        this.movieArray = [{
+          Title: "Aucune série trouvée",
+          Poster: "N/A"
+        }];
       }
     });
   }
