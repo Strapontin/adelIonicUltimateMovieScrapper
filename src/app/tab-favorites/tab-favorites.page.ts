@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataProviderOMDbService } from '../services/data-provider-omdb.service';
 import { Storage } from '@ionic/storage';
+// import { File } from '@ionic-native/file';
 
 @Component({
   selector: 'app-tab-favorites',
@@ -69,7 +70,20 @@ export class TabFavoritesPage implements OnInit {
       console.log(error);
     });
   }
+
+
+
+  // Click sur le bouton pour recevoir les favoris
+  clickDownload() {
+
+  }
+
+  // Click sur le bouton pour envoyer les favoris
+  clickUpload() {
+
+  }
 }
+
 
 
 class Favorite {

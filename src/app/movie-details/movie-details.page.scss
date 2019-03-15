@@ -3,9 +3,23 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    max-width: 350px;
 } 
 
 ion-back-button,
 ion-button {
     float: right;
+}
+
+.addfav {
+    display: flex;
+}
+
+p {
+    flex: 0 0 100%;
+}
+
+b {
+    position: relative;
+    top: 31%;
 }

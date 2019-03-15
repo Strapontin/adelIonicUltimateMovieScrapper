@@ -2,17 +2,20 @@
   <ion-toolbar>
     <ion-title>{{ title }}</ion-title>
     <ion-back-button></ion-back-button> 
-    
-    <ion-button id="1" #first ion-button color="{{ favoritesColor }}" (click)="clickFavorites(first)">
-        <ion-icon name="star"></ion-icon>
-    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <div id="dataContainer">
-    <img [src]="detailsSerie.poster" />
-    <!-- TODO Ajouter un onClick => affichage poster HD -->
+    <img [src]="'http://img.omdbapi.com/?apikey=75522b56&h=3000&i=' + id" onClick="window.open(this.src)" />
+
+    <div class="addfav">
+      <p><b>Favoris</b>
+      <ion-button id="1" #first ion-button color="{{ favoritesColor }}" (click)="clickFavorites(first)">
+          <ion-icon name="star"></ion-icon>
+      </ion-button></p>
+    </div>
+
     <p><b>Date de sortie</b> : {{ detailsSerie.releaseYear }}</p>
     <p><b>Recommandation d'âge</b> : {{ detailsSerie.minimumAge }}</p>
     <p><b>Résumé</b> : {{ detailsSerie.fullPlot }}</p>

@@ -2,16 +2,19 @@
   <ion-toolbar>
     <ion-title>{{ title }}</ion-title>
     <ion-back-button></ion-back-button>
-    
-    <ion-button id="1" #first ion-button color="{{ favoritesColor }}" (click)="clickFavorites(first)">
-        <ion-icon name="star"></ion-icon>
-    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
   <img [src]="poster" />
+    
+  <div class="addfav">
+    <p><b>Favoris</b>
+    <ion-button id="1" #first ion-button color="{{ favoritesColor }}" (click)="clickFavorites(first)">
+        <ion-icon name="star"></ion-icon>
+    </ion-button></p>
+  </div>
 
   <div id="dataContainer">
     <p><b>Titre de l'épisode</b> : {{ episode.title }}</p>

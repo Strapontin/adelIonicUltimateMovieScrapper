@@ -3,7 +3,14 @@
     <ion-title>
       Liste de vos favoris
     </ion-title>
-    
+
+    <ion-button id="1" #first ion-button color="{{ blue }}" (click)="clickDownload(first)">
+    <ion-icon name="cloud-download"></ion-icon>
+    </ion-button>
+
+    <ion-button id="1" #first ion-button color="{{ blue }}" (click)="clickUpload(first)">
+    <ion-icon name="cloud-upload"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 

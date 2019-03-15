@@ -84,6 +84,17 @@ export class MovieDetailsPage implements OnInit {
       ionicButton.color = 'danger';
     }
   }
+
+  clickImage() {
+
+    this.dataProvider.getBigImage(this.id).then(result => {
+
+      console.log(result);
+    })
+    .catch(() => {
+      console.log("error");
+    });
+  }
 }
 
 export class DetailsMovie {
